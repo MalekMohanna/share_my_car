@@ -4,3 +4,7 @@ from django.shortcuts import render,redirect
 def index(request):
     
     return render(request,'index.html')
+
+def show_detials_trip(request):
+    
+    return render(request,'trip_details.html')
