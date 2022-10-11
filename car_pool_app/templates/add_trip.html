@@ -44,37 +44,51 @@
   </head>
   <body>
     <div class="testbox">
-      <form action="/">
+      <form action="/wall" method="POST">
         <div class="banner">
         </div>
         <h2>Add Trip</h2>
         <div class="item">
           <label for="phone_number">Phone Number<span>*</span></label>
-          <input id="phone_number" type="text" name="phone_number" required/>
+          <input id="phone_number" type="text" name="phone-num" required/>
         </div>
         <div class="item">
           <label for="car">Car<span>*</span></label>
-          <input id="car" type="text" name="car" required/>
+          <input id="car" type="text" name="car-name" required/>
         </div>
         <div class="item">
           <label for="num_seates">Number of Seates<span>*</span></label>
-          <input id="num_seates" type="text" name="num_seates" required/>
+          <input id="num_seates" type="text" name="seats-num" required/>
         </div>
         <div class="item">
           <label for="bdate">When<span>*</span></label>
-          <input id="bdate" type="datetime-local" name="bdate" required/>
+          <input id="bdate" type="datetime-local" name="date_from" required/>
           <i class="fas fa-calendar-alt"></i>
         </div>
           <div class="item">
-            <label for="from">From</label>
-            <select>
-              <option selected value=""></option>
+            <label for="city-from">From</label>
+            <select name="city-from">
+              <option value="Ramallah">Ramallah</option>
+              <option value="Nablus">Nablus</option>
+              <option value="Jenin">Jenin</option>
+              <option value="Tulkaram">Tulkaram</option>
+              <option value="Jericho">Jericho</option>
+              <option value="Hebron">Hebron</option>
+              <option value="Gaza">Gaza</option>
+              <option value="Bethlehem">Bethlehem</option>
             </select>
           </div>
           <div class="item">
-            <label for="to">To</label>
-            <select>
-              <option selected value=""></option>
+            <label for="city-to">To</label>
+            <select name="city-to">
+              <option value="Ramallah">Ramallah</option>
+              <option value="Nablus">Nablus</option>
+              <option value="Jenin">Jenin</option>
+              <option value="Tulkaram">Tulkaram</option>
+              <option value="Jericho">Jericho</option>
+              <option value="Hebron">Hebron</option>
+              <option value="Gaza">Gaza</option>
+              <option value="Bethlehem">Bethlehem</option>
             </select>
           </div>
           <div class="item">
@@ -83,7 +97,7 @@
           </div>
           </div>
           <div class="btn-block">
-            <button type="submit" href="/">Add Trip</button>
+            <button type="submit">Add Trip</button>
           </div>
         </div>
       </form>
