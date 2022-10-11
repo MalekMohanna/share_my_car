@@ -1,0 +1,31 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+#nav{
+    height: 15%;
+    margin-bottom: 20px;
+}
+
+#search_bar{
+    height: 15%;
+    width: 70%;
+    background-color: #F8F9FA;
+    margin: 0 auto;
+}
+
+.card{
+    margin: 0 auto;
+    width: 30%;
+    margin-top: 30px;
+}
+
+#show{
+    margin-right: 20px;
+}
+
+#filter{
+    margin-top: 10px;
+}
