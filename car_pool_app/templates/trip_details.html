@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>trips</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %}
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/details.css'%}" />
+</head>
+<body>
+	<nav class=" d-flex justify-content-between navbar navbar-expand-lg navbar-light bg-light">
+        <div>
+            <p class="navbar-brand">Welcome <a href="#">Username!</a></p>
+        </div>
+        <div>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">Add Trip</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">Log Out</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#">About Us</a>
+            </li>
+        </ul>
+        </div>
+    </nav>
+	
+	<main class="card d-flex align-contents-center " >
+		<div id="map"></div>
+
+
+
+	  <div class="card d-flex align-self-center mr-3" style="width: 50rem; height: 20rem;">
+		<div class="card-body">
+		   <div  class="row d-flex justify-content-around justify-items-flex-start "> 
+			<h5>Driver Name:</h5>
+			<h5>Trip Name:</h5>
+		    </div>
+			<div  class="row d-flex justify-content-around"> 
+				<p>from:</p>
+				<p>To:</p>
+				</div>
+			<div  class="row d-flex justify-content-around "> 
+				<p>Car</p>
+				<p>Description</p>
+			</div>
+			<div  class="row d-flex justify-content-around "> 
+				<p>Number of Seats</p>
+			</div>
+		    <div  class="row d-flex justify-content-between justify-items-flex-start "> 
+			    <p>Driver Name</p>
+				<p>Trip Name</p>
+			</div>
+		<div  class="row d-flex justify-content-between justify-items-flex-start">
+			<div class="col-6">
+		  <a href="#" class="btn btn-primary">Update</a>
+		  <a href="#" class="btn btn-primary">Delete</a>
+		</div>
+		  <a href="#" class="btn btn-primary">apply for trip</a>
+		</div>
+		</div>
+	  </div>
+
+	</main>
+
+
+	<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_kzfLR8Z8Bxjqc6aHzTdjTcKWl6Ug_pw&callback=initMap&v=weekly"
+	defer ></script>
+
+	<script src="{% static 'jscript/jscript.js'%}"></script>
+	<script type="module" src="{% static 'jscript/index.ts'%}"></script>
+	
+
+</body>
+</html>

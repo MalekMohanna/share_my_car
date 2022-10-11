@@ -5,67 +5,50 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	{% load static %}
-	<link rel="stylesheet" href="{% static 'css/login.css'%}">
+	<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 	<title>Login</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 
 <body>
-	<div class="row justify-content-center ">
-
-		<div class="my-form">
-			<form method="post">
+	<div class="container">
+		<div class="form sign-in-container">
+			<form action="/proce-login" method="post">
 				{% csrf_token %}
-				<div class="row d-flex justify-items-center">
-					<div class="col card">
-						<div class="row-lg-3">
-							<div class="col ">
-								<div class="my-logo">
-									<h1>logo place-holder</h1>
-								</div>
-								<div class="row align-items-center pt-2 pb-3">
-									<div class="col ps-5">
-										<h6 class="mb-0">Email Address</h6>
-									</div>
-									<div class="col pe-5">
-										<input type="text" name="e1" class="form-control form-control-lg" />
-									</div>
-								</div>
-								<div class="row align-items-center pt-4 pb-3">
-									<div class="col  ps-5">
-										<h6 class="mb-0">Password</h6>
-									</div>
-									<div class="col-md-6 pe-5">
-										<input type="password" name="p1" class="form-control form-control-lg" />
-									</div>
-								</div>
-							</div>
-							<div class="px-5 py-6" id="login-button">
-								<input type="hidden" name="login" value="log">
-								<button type="submit" name="login" value="log"
-									class="btn btn-primary btn-lg">Login</button>
-							</div>
-						</div>
-					</div>
+				<h1>Sign in</h1>
+				<div class="social-container">
+					<a href="https://rpbloggers.com/"><i class="fab fa-facebook-f"></i></a>
+					<a href="https://rpbloggers.com/"><i class="fab fa-google-plus-g"></i></a>
+					<a href="https://rpbloggers.com/"><i class="fab fa-linkedin-in"></i></a>
 				</div>
+				<div class="col">
+					{% if messages %}
+					<p>Massages of validation</p>
+					<ul class="messages">
+						{% for message in messages %}
+						<li style="color: red;" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message
+							}}</li>
+						{% endfor %}
+					</ul>
+					{% endif %}
+				</div>
+				<input type="email" name="login_email" placeholder="User Email">
+				<input type="password" name="login_password" placeholder="Password">
+				<button>Sign In</button>
 			</form>
-			<div class="row justify-content-center">
-				<p>Don't have an account ? <a href="/register/">Sign up</a> </p>
-			</div>
-			<div class="col">
-				{% if messages %}
-				<ul class="messages">
-					{% for message in messages %}
-					<li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-					{% endfor %}
-				</ul>
-				{% endif %}
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-right">
+					<h1>Sign UP</h1>
+					<p>Sign up here if you don't have account.</p>
+					<button class="signup_btn"><a href="/registration" style="color: White;">Sign Up</a></button>
+				</div>
 			</div>
 		</div>
 	</div>
-	<script src="{% static 'jscript.js' %}"></script>
 </body>
 
 </html>
