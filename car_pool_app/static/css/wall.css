@@ -10,7 +10,8 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
 }
- 
+
+
 .wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -18,6 +19,8 @@ body {
   width: 82%;
   margin: 0 auto;
 }
+
+
 
 .container-fostrap {
   padding: 1em;
@@ -81,6 +84,12 @@ h1.heading {
   padding:15px;
   text-align:left;
 }
+
+.card-content span{
+  font-weight: bold;
+  color: #A288DE;
+}
+
 .card-title {
   margin-top:0px;
   font-weight: 700;
