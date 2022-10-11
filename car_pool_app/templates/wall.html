@@ -58,8 +58,9 @@
         </nav>
     </form>
     <section>
+      {% for trip in my_trip %}
       <section class="wrapper">
-        {% for trip in my_trip %}
+
         <div class="container-fostrap">
             <div class="content">
                 <div class="container">
@@ -70,7 +71,7 @@
                                 <img src="{% static 'icons/car_image.jpg' %}" />
                               </a>
                                 <div class="card-content">
-                                    <p class="">{{trip.driver.first_name}}</p>
+                                    <p class="">Driver : {{trip.driver.first_name}} {{trip.driver.last_name}}</p>
                                     <p>Trip Time: {{trip.when}}</p>
                                     <p>From: {{trip.from_where}}</p>
                                     <p>To: {{trip.to_where}}</p>
@@ -88,6 +89,7 @@
                 </div>
             </div>
         </div>
+
     </section>
     {% endfor %}
     </section>
