@@ -5,31 +5,44 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+	<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 	<title>Registration</title>
 	{% load static %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}"> 
+	<link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 
 <body>
 	<div class="container">
 		<div class="form sign-in-container">
-			<form action="#">
+			<form action="/regist_proc" method="post">
+				{% csrf_token %}
 				<h1>Sign up</h1>
-                <input type="first_name" placeholder="First name">
-                <input type="lastt_name" placeholder="Last name">
-				<input type="email" placeholder="User Email">
-				<input type="password" placeholder="Password">
-				<input type="conf-pw" placeholder="Confirm Password">
+
+				<input type="text" name="first_name" placeholder="First name" required>
+				<input type="text" name="last_name" placeholder="Last name" required>
+				<input type="email" name="email" placeholder="User Email" required>
+				<input type="password" name="password" placeholder="Password" required>
+				<input type="password" name="confirmed_password" placeholder="Confirm Password" required>
 				<button>Sign Up</button>
 			</form>
 		</div>
 		<div class="overlay-container">
 			<div class="overlay">
 				<div class="overlay-panel overlay-right">
+					<div class="col">
+						{% if messages %}
+						<p>Massages of validation</p>
+						<ul class="messages">
+							{% for message in messages %}
+							<li style="color: red;" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+							{% endfor %}
+						</ul>
+						{% endif %}
+					</div>
 					<h1>Sign IN</h1>
 					<p>Sign in here if you have account.</p>
-					<button class="signup_btn">Sign In</button>
+					<button class="signup_btn"><a style="color: White;" href="/">Sign In</a></button>
 				</div>
 			</div>
 		</div>

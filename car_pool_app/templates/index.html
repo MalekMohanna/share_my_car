@@ -5,24 +5,37 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+	<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 	<title>Login</title>
 	{% load static %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}"> 
+	<link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 
 <body>
 	<div class="container">
 		<div class="form sign-in-container">
-			<form action="#">
+			<form action="/proce-login" method="post">
+				{% csrf_token %}
 				<h1>Sign in</h1>
 				<div class="social-container">
 					<a href="https://rpbloggers.com/"><i class="fab fa-facebook-f"></i></a>
 					<a href="https://rpbloggers.com/"><i class="fab fa-google-plus-g"></i></a>
 					<a href="https://rpbloggers.com/"><i class="fab fa-linkedin-in"></i></a>
 				</div>
-				<input type="email" placeholder="User Email">
-				<input type="password" placeholder="Password">
+				<div class="col">
+					{% if messages %}
+					<p>Massages of validation</p>
+					<ul class="messages">
+						{% for message in messages %}
+						<li style="color: red;" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message
+							}}</li>
+						{% endfor %}
+					</ul>
+					{% endif %}
+				</div>
+				<input type="email" name="login_email" placeholder="User Email">
+				<input type="password" name="login_password" placeholder="Password">
 				<button>Sign In</button>
 			</form>
 		</div>
@@ -31,7 +44,7 @@
 				<div class="overlay-panel overlay-right">
 					<h1>Sign UP</h1>
 					<p>Sign up here if you don't have account.</p>
-					<button class="signup_btn">Sign Up</button>
+					<button class="signup_btn"><a href="/registration" style="color: White;">Sign Up</a></button>
 				</div>
 			</div>
 		</div>
