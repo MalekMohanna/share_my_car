@@ -88,12 +88,11 @@ class Passanger(models.Model):
 def add_user(postdata):
     first_name = postdata.get('first_name')
     last_name =  postdata.get('last_name')
-    pw = postdata.get('pw1')
+    pw = postdata.get('password')
     pw_hash = bcrypt.hashpw(pw.encode(), bcrypt.gensalt()).decode()
     print(pw_hash)
     email1 = postdata.get('email')
-    birthday = postdata.get('birthday')
-    User.objects.create(first_name=first_name,last_name=last_name,password=pw_hash,email=email1,birthday=birthday)
+    User.objects.create(first_name=first_name,last_name=last_name,password=pw_hash,email=email1)
     last = User.objects.last()
     print('done')
     return last.id

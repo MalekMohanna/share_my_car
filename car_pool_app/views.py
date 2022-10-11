@@ -27,7 +27,20 @@ def proc_login(request):
     
 
 def registration(request):
+
     return render(request,'registration.html')
+
+def regist_proc(request):
+    errors={}
+    errors=User.objects.new_validator(request.POST)
+    if not errors:
+        id = add_user(request.POST)
+        return redirect("/")
+    else:
+        for key, value in errors.items():
+            messages.error(request,value)
+        return redirect("/registration")
+
 
 def wall(request):
     context = {
