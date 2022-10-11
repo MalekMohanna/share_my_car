@@ -39,7 +39,6 @@ class UserManager(models.Manager):
 class TripManager(models.Manager):
     def trip_validation(self,postdata):
         errors = {}  
-        date_format = "%Y-%m-%d"  # %Y for year, %m for month and %d for day
 
         if len(postdata["phone-num"]) < 2:
             errors["phone-num"] = "Phone number should be at least 9 numbers"
@@ -51,8 +50,7 @@ class TripManager(models.Manager):
             errors["city-from"] = "City name  should be at least 3 characters"
         if len(postdata["city-to"]) < 3:
             errors["city-to"] = "City name  should be at least 3 characters"
-        if datetime.datetime.today() > datetime.datetime.strptime(postdata['date_from'],date_format) :
-            errors['date_from'] = "Date must be in the Future"
+
         return errors
 
 
@@ -72,6 +70,7 @@ class Trip(models.Model):
     from_where = models.CharField(max_length=255)
     to_where = models.CharField(max_length=255)
     descreption = models.CharField(max_length=255)
+    when = models.DateTimeField(default = datetime.datetime.now())
     driver = models.ForeignKey(User, related_name="drivers", on_delete = models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

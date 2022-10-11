@@ -7,7 +7,7 @@ urlpatterns = [
     path('success',views.success),
     path('registration/',views.registration ),
     path('regist_proc',views.regist_proc),
-    path('wall',views.wall),
-    path('trips/', views.show_detials_trip),
-    path('my-trips/', views.my_trip),
+    path('wall/',views.wall),
+    path('make_trip/',views.make_trip),
+    path('trip_process',views.trip_process),
 ]

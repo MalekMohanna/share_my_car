@@ -24,15 +24,14 @@
 					<a href="https://rpbloggers.com/"><i class="fab fa-linkedin-in"></i></a>
 				</div>
 				<div class="col">
-					{% if messages %}
 					<p>Massages of validation</p>
-					<ul class="messages">
+				{% if messages %}
+						<ul class="messages">
 						{% for message in messages %}
-						<li style="color: red;" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message
-							}}</li>
+						<li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
 						{% endfor %}
-					</ul>
-					{% endif %}
+						</ul>
+				{% endif %}
 				</div>
 				<input type="email" name="login_email" placeholder="User Email">
 				<input type="password" name="login_password" placeholder="Password">
