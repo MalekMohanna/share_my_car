@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 
 def index(request):
     
-    return render(request,'index.html')
+    return render(request,'add_trip.html')
 
 def show_detials_trip(request):
 
