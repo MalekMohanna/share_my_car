@@ -7,7 +7,7 @@ from django.contrib import messages
 
 
 def index(request):
-
+    
     return render(request,'index.html')
 
 def success(request):
@@ -45,9 +45,8 @@ def regist_proc(request):
 
 
 def wall(request):
-    context={
-        'my_trip':Trip.objects.all(),
-        'my_user':User.objects.get(id=request.session['user_id']),
+    context = {
+
     }
     return render(request,'wall.html',context)
 
