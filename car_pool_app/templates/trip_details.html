@@ -9,7 +9,36 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/details.css'%}" />
 </head>
 <body>
-	<nav class=" d-flex justify-content-between navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-custom navbar-mainbg">
+        <a class="navbar-brand navbar-logo" href="#">Mostafa</a>
+        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>Address Book</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Components</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Calendar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Documents</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+	<!-- <nav class=" d-flex justify-content-between navbar navbar-expand-lg navbar-light bg-light">
         <div>
             <p class="navbar-brand">Welcome <a href="#">Username!</a></p>
         </div>
@@ -29,51 +58,102 @@
             </li>
         </ul>
         </div>
-    </nav>
-	
-	<main class="card d-flex align-contents-center " >
+    </nav> -->
 		<div id="map"></div>
-
-
-
-	  <div class="card d-flex align-self-center mr-3" style="width: 50rem; height: 20rem;">
-		<div class="card-body">
-		   <div  class="row d-flex justify-content-around justify-items-flex-start "> 
-			<h5>Driver Name:</h5>
-			<h5>Trip Name:</h5>
-		    </div>
-			<div  class="row d-flex justify-content-around"> 
-				<p>from:</p>
-				<p>To:</p>
-				</div>
-			<div  class="row d-flex justify-content-around "> 
-				<p>Car</p>
-				<p>Description</p>
-			</div>
-			<div  class="row d-flex justify-content-around "> 
-				<p>Number of Seats</p>
-			</div>
-		    <div  class="row d-flex justify-content-between justify-items-flex-start "> 
-			    <p>Driver Name</p>
-				<p>Trip Name</p>
-			</div>
-		<div  class="row d-flex justify-content-between justify-items-flex-start">
-			<div class="col-6">
-		  <a href="#" class="btn btn-primary">Update</a>
-		  <a href="#" class="btn btn-primary">Delete</a>
-		</div>
-		  <a href="#" class="btn btn-primary">apply for trip</a>
-		</div>
-		</div>
-	  </div>
-
-	</main>
-
-
+		<div class="container-fostrap">
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <div class="card">
+                                <div class="card-content">
+									{% if my_user.id != my_trip.driver.id %}
+									<div>
+										<p><span>Driver:</span>{{trip.driver.first_name}} {{trip.driver.last_name}}</p>
+										<p><span>From:</span>{{trip.from_where}}</p>
+										<p><span>Number of Seates:</span></p>
+										<p><span>Passengers:</span></p>
+									</div>
+									<div>
+										<p><span>Phone Number:</span></p>
+										<p><span>To:</span>{{trip.to_where}}</p>
+										<p><span>Trip Time:</span>{{trip.when}}</p>
+										<p><span>Description:</span></p>
+										<button type="submit" id="update_btn" class="btn btn-primary">Apply for Trip</button>
+									</div>
+									{% else %}
+									<form action="" method="post">
+										<div class="form control">
+											<div>
+												<label class="form-label" for="driver"><span>Driver:</span></label>
+												<input class="form-control" type="text" name="driver" id="driver">
+											</div>
+											<div>
+												<label class="form-label" for="city-from"><span>From:</span></label>
+												<select class="form-control" name="city-from">
+													<option value="Ramallah">Ramallah</option>
+													<option value="Nablus">Nablus</option>
+													<option value="Jenin">Jenin</option>
+													<option value="Tulkaram">Tulkaram</option>
+													<option value="Jericho">Jericho</option>
+													<option value="Hebron">Hebron</option>
+													<option value="Gaza">Gaza</option>
+													<option value="Bethlehem">Bethlehem</option>
+												</select>
+											</div>
+											<div>
+												<label class="form-label" for="number_seates"><span>Number of Seates:</span></label>
+												<input class="form-control" type="number" name="number_seates" id="number_seates">
+											</div>
+											<p><span>Passengers:</span></p>
+										</div>
+										<div>
+											<div>
+												<label class="form-label" for="phone_num"><span>Phone Number:</span></label>
+												<input class="form-control" type="number" name="phone_num" id="phone_num">
+											</div>
+											<div>
+												<label class="form-label" for="city-to"><span>To:</span></label>
+												<select class="form-control" name="city-to">
+													<option value="Ramallah">Ramallah</option>
+													<option value="Nablus">Nablus</option>
+													<option value="Jenin">Jenin</option>
+													<option value="Tulkaram">Tulkaram</option>
+													<option value="Jericho">Jericho</option>
+													<option value="Hebron">Hebron</option>
+													<option value="Gaza">Gaza</option>
+													<option value="Bethlehem">Bethlehem</option>
+												</select>
+											</div>
+											<div>
+												<label class="form-label" for="when"><span>Trip Time:</span></label>
+												<input class="form-control" type="datetime-local" name="when" id="when">
+											</div>
+											<div>
+												<label class="form-label" for="desc"><span>Description:</span></label>
+												<textarea class="form-control" name="desc" id="desc" cols="30" rows="5"></textarea>
+											</div>
+											<button type="submit" id="update_btn" class="btn btn-primary">Update</button>
+											<button type="submit" class="btn btn-danger">Delete</button>
+										</div>
+									</form>
+									{% endif %}
+                                </div>
+                                <div class="card-read-more">
+                                </div>
+                            </div>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 	<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_kzfLR8Z8Bxjqc6aHzTdjTcKWl6Ug_pw&callback=initMap&v=weekly"
 	defer ></script>
 
 	<script src="{% static 'jscript/jscript.js'%}"></script>
+	<script src="{% static 'jscript/navbar.js'%}"></script>
 	<script type="module" src="{% static 'jscript/index.ts'%}"></script>
 	
 

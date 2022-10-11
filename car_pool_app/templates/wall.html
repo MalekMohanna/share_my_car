@@ -58,22 +58,22 @@
         </nav>
     </form>
     <section>
-      <section class="wrapper">
+      <section class="wrapper" id="my_ca">
         {% for trip in my_trip %}
         <div class="container-fostrap">
             <div class="content">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-4">
+                        <div class="col-xs-12 col-sm-12">
                             <div class="card">
                                 <a class="img-card" >
                                 <img src="{% static 'icons/car_image.jpg' %}" />
                               </a>
                                 <div class="card-content">
-                                    <p class="">Driver : {{trip.driver.first_name}} {{trip.driver.last_name}}</p>
-                                    <p>Trip Time: {{trip.when}}</p>
-                                    <p>From: {{trip.from_where}}</p>
-                                    <p>To: {{trip.to_where}}</p>
+                                    <p><span>Driver:</span> {{trip.driver.first_name}} {{trip.driver.last_name}}</p>
+                                    <p><span>Trip Time:</span> {{trip.when}}</p>
+                                    <p><span>From:</span> {{trip.from_where}}</p>
+                                    <p><span>To:</span> {{trip.to_where}}</p>
                                 </div>
                                 <div class="card-read-more">
                                     <a href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html" class="btn btn-link btn-block">
