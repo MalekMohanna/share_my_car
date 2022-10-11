@@ -10,4 +10,6 @@ urlpatterns = [
     path('wall/',views.wall),
     path('make_trip/',views.make_trip),
     path('trip_process',views.trip_process),
+    path('logout',views.logout),
+    path('account/',views.account),
 ]

@@ -43,6 +43,9 @@ def regist_proc(request):
             messages.error(request,value)
         return redirect("/registration")
 
+def logout(request):
+    request.session.clear()
+    return redirect ("/")
 
 def wall(request):
     context={
@@ -72,3 +75,10 @@ def trip_process(request):
         for key, value in errors.items():
             messages.error(request,value)
     return redirect('/make_trip')
+
+def account(request):
+    context={
+        'my_trip':Trip.objects.all(),
+        'my_user':User.objects.get(id=request.session['user_id']),
+    }
+    return render(request,'account.html',context)
