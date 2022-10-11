@@ -20,7 +20,7 @@
       id="nav"
     >
       <div>
-        <p class="navbar-brand">Welcome <a href="#">Username!</a></p>
+        <p class="navbar-brand">Welcome <a href="#">{{my_user.first_name}}!</a></p>
       </div>
       <div>
         <ul class="navbar-nav">
@@ -28,7 +28,7 @@
             <a class="nav-link" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Add Trip</a>
+            <a class="nav-link" href="/make_trip">Add Trip</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Log Out</a>
@@ -59,6 +59,7 @@
     </form>
     <section>
       <section class="wrapper">
+        {% for trip in my_trip %}
         <div class="container-fostrap">
             <div class="content">
                 <div class="container">
@@ -69,10 +70,10 @@
                                 <img src="{% static 'icons/car_image.jpg' %}" />
                               </a>
                                 <div class="card-content">
-                                    <p class="">Driver name</p>
-                                    <p>Trip Time: placeholder</p>
-                                    <p>From: placeholder</p>
-                                    <p>To: palceholder</p>
+                                    <p class="">{{trip.driver.first_name}}</p>
+                                    <p>Trip Time: {{trip.when}}</p>
+                                    <p>From: {{trip.from_where}}</p>
+                                    <p>To: {{trip.to_where}}</p>
                                 </div>
                                 <div class="card-read-more">
                                     <a href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html" class="btn btn-link btn-block">
@@ -88,23 +89,7 @@
             </div>
         </div>
     </section>
-    
-        <!-- <div class="card">
-=======
->>>>>>> b05ff5308bbe9466f4a4cd3ddc977951ef62bdf1
-=======
->>>>>>> b05ff5308bbe9466f4a4cd3ddc977951ef62bdf1
-=======
->>>>>>> d62bfc227aea87ffd2592607ef5bfc7726638e99
-            <h5 class="card-header">Trip</h5>
-            <div class="card-body">
-              <h5 class="card-title">Trip Information</h5>
-              <p class="card-text">Driver Name</p>
-              <p class="card-text">Trip Time: placeholder</p>
-              <p class="card-text">From: placeholder</p>
-              <p class="card-text">To: placeholder</p>
-              <a href="#" class="btn btn-primary">Show details</a>
-            </div>
+    {% endfor %}
     </section>
   </body>
 </html>

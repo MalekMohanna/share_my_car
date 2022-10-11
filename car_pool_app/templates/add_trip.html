@@ -44,7 +44,8 @@
   </head>
   <body>
     <div class="testbox">
-      <form action="/wall" method="POST">
+      <form action="/trip_process" method="POST">
+        {% csrf_token %}
         <div class="banner">
         </div>
         <h2>Add Trip</h2>
