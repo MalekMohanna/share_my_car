@@ -80,6 +80,7 @@ def account(request):
     context={
         'my_trip':Trip.objects.all(),
         'my_user':User.objects.get(id=request.session['user_id']),
+        'my_passanger':Passanger.objects.all(),
     }
     return render(request,'account.html',context)
 

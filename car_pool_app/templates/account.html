@@ -92,6 +92,40 @@
         {% endif %}
         {% endfor %}
     </section>
+    <section class="wrapper">
+      {% for passanger in my_passanger %}
+      {% if my_user.id == passanger.passanger.id %}
+      <div class="container-fostrap">
+          <div class="content">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-xs-12 col-sm-12">
+                          <div class="card">
+                              <a class="img-card" >
+                              <img src="{% static 'icons/car_image.jpg' %}" />
+                            </a>
+                              <div class="card-content">
+                                  <p class="">Driver : {{passanger.trip.driver.first_name}} {{passanger.trip.driver.last_name}}</p>
+                                  <p>Trip Time: {{passanger.trip.when}}</p>
+                                  <p>From: {{passanger.trip.from_where}}</p>
+                                  <p>To: {{passanger.trip.to_where}}</p>
+                              </div>
+                              <div class="card-read-more">
+                                  <a href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html" class="btn btn-link btn-block">
+                                      Show details
+                                  </a>
+                              </div>
+                          </div>
+                      </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+  </section>
     </section>
   </body>
 </html>
