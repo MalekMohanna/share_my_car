@@ -16,5 +16,5 @@ urlpatterns = [
     path('join_trip/<int:id>',views.join_trip),
     path('update/<int:id>',views.update),
     path('delete_trip/<int:id>',views.delete),
-    # path('about/',views.about)
+    path('about/',views.about),
 ]

@@ -128,3 +128,6 @@ def delete(request,id):
     x= Trip.objects.get(id= id)
     x.delete()
     return redirect('/wall')
+
+def about(request):
+    return render(request,'about.html')
