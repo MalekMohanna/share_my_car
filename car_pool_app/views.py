@@ -6,9 +6,13 @@ from .models import *
 from django.contrib import messages
 
 
-def index(request):
 
-    return render(request,'index.html')
+def index(request):
+    return redirect('/login')
+
+def login(request):
+
+    return render(request,'login.html')
 
 def success(request):
     if "user_id" not in request.session:
@@ -45,7 +49,7 @@ def regist_proc(request):
 
 def logout(request):
     request.session.clear()
-    return redirect ("/")
+    return redirect ("/login")
 
 def wall(request):
     context={
@@ -129,6 +133,15 @@ def delete(request,id):
     x= Trip.objects.get(id= id)
     x.delete()
     return redirect('/wall')
+
+def search(request):
+    from1 = request.POST['from']
+    to = request.POST['to']
+    x = Trip.objects.filter(from_where = from1, to_where = to)
+    context = {
+        'my_trip': x,
+    }
+    return render(request,'search.html',context)
 
 def about(request):
     return render(request,'about.html')

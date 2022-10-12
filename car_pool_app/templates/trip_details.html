@@ -89,9 +89,8 @@
 											</select>
 										</div>
 										<div>
-											<label class="form-label" for="number_seates"><span>Number of
-													Seates:</span></label>
-											<h3>{{my_trip.seats_num}}</h3>
+											<label class="form-label" for="number_seates"><span>Number ofSeates:</span></label>
+											<input class="form-control" type="number" name="phone-num" id="phone_num" value="{{my_trip.seats_num}}">
 										</div>
 										<p><span>Passengers:</span></p>
 										<ul>
@@ -127,7 +126,7 @@
 											<textarea class="form-control" name="desc" id="desc" cols="30"rows="5">{{my_trip.descreption}}</textarea>
 										</div>
 										<button type="submit" id="update_btn" class="btn btn-primary" name="update_trip">Update</button>
-										<button type="button" class="btn btn-danger"><a href="/delete_trip/{{my_trip.id}}">delete</a></button>
+										<button type="button" class="btn btn-danger"><a style="color: white;" href="/delete_trip/{{my_trip.id}}">delete</a></button>
 									</div>
 								</form>
 								{% endif %}

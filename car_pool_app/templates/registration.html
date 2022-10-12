@@ -18,7 +18,6 @@
 			<form action="/regist_proc" method="post">
 				{% csrf_token %}
 				<h1>Sign up</h1>
-
 				<input type="text" name="first_name" placeholder="First name" required>
 				<input type="text" name="last_name" placeholder="Last name" required>
 				<input type="email" name="email" placeholder="User Email" required>
@@ -32,7 +31,7 @@
 				<div class="overlay-panel overlay-right">
 					<div class="col">
 						{% if messages %}
-						<p>Massages of validation</p>
+						<p style="color: red;">Massages of validation</p>
 						<ul class="messages">
 							{% for message in messages %}
 							<li style="color: red;" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
