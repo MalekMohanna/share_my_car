@@ -82,3 +82,10 @@ def account(request):
         'my_user':User.objects.get(id=request.session['user_id']),
     }
     return render(request,'account.html',context)
+
+def trip_details(request,id):
+    context = {
+        'my_trip':Trip.objects.get(id=id),
+        'my_user':User.objects.get(id=request.session['user_id']),
+    }
+    return render(request,'trip_details.html',context)
