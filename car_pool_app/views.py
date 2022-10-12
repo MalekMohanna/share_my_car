@@ -84,13 +84,47 @@ def account(request):
     return render(request,'account.html',context)
 
 def trip_details(request,id):
+    z = Passanger.objects.filter(trip_id=id)
     context = {
         'my_trip':Trip.objects.get(id=id),
         'my_user':User.objects.get(id=request.session['user_id']),
+        'my_passangers':z,
     }
     return render(request,'trip_details.html',context)
 
-def join_trip(request):
+def join_trip(request,id):
     user = User.objects.get(id=request.session['user_id'])
-    # trip = Trip.objects.get(id = )
-    return
+    trip = Trip.objects.get(id = id)
+    id = trip.id
+    check =Passanger.objects.filter(passanger=user)
+    seats_availabe =trip.seats_num
+    if seats_availabe > 0:
+        if not check :
+            y=trip.seats_num
+            y-=1
+            trip.seats_num=y
+            trip.save()
+            x = Passanger.objects.create(passanger = user,trip = trip)
+            x.save()
+    return redirect(f'/details/{id}')
+
+def update(request,id):
+    x= Trip.objects.get(id= id)
+    print(x.car)
+    phone = request.POST['phone-num']
+    from1 = request.POST['city-from']
+    to = request.POST['city-to']
+    date1 = request.POST['date_from']
+    desc = request.POST['desc']
+    x.phone_num = phone
+    x.from_where = from1
+    x.to_where = to
+    x.when = date1
+    x.descreption = desc
+    x.save()
+    return redirect(f'/details/{id}')
+
+def delete(request,id):
+    x= Trip.objects.get(id= id)
+    x.delete()
+    return redirect('/wall')

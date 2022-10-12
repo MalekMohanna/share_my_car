@@ -13,4 +13,7 @@ urlpatterns = [
     path('logout',views.logout),
     path('account/',views.account),
     path('details/<int:id>',views.trip_details),
+    path('join_trip/<int:id>',views.join_trip),
+    path('update/<int:id>',views.update),
+    path('delete_trip/<int:id>',views.delete),
 ]

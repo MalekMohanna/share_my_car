@@ -74,31 +74,39 @@
 					<div class="col-xs-12 col-sm-12">
 						<div class="card">
 							<div class="card-content">
+								{% if my_user.id != my_trip.driver.id %}
+								<form action="/join_trip/{{my_trip.id}}" method="post">
+									{% csrf_token %}
 
-								<form action="" method="post">
-									{% if my_user.id != my_trip.driver.id %}
 									<div class="my-details" >
 										<div>
-											<p><span>Driver:</span>{{trip.driver.first_name}} {{trip.driver.last_name}}</p>
-											<p><span>From:</span>{{trip.from_where}}</p>
-											<p><span>Number of Seates:</span>{{trip.seats_num}}</p>
+											<p><span>Driver:</span>{{my_trip.driver.first_name}} {{my_trip.driver.last_name}}</p>
+											<p><span>From:</span>{{my_trip.from_where}}</p>
+											<p><span>Number of Seates:</span>{{my_trip.seats_num}}</p>
 											<p><span>Passengers:</span></p>
+											<ul>
+											{% for passanger in my_passangers %}
+											<li>{{passanger.passanger.first_name}}</li>
+											{% endfor %}
+										</ul>
 										</div>
 										<div>
-											<p><span>Phone Number:</span></p>
-											<p><span>To:</span>{{trip.to_where}}</p>
-											<p><span>Trip Time:</span>{{trip.when}}</p>
-											<p><span>Description:</span></p>
+											<p><span>Phone Number:</span>{{my_trip.phone_num}}</p>
+											<p><span>To:</span>{{my_trip.to_where}}</p>
+											<p><span>Trip Time:</span>{{my_trip.when}}</p>
+											<p><span>Description:</span>{{my_trip.descreption}}</p>
 											<button type="submit" id="update_btn" class="btn btn-primary">Apply for
 												Trip</button>
 										</div>
-										<input type="hidden" name="details_id" value="{{my_trip.id}}">
 									</div>
-									{% else %}
+								</form>
+								{% else %}
+								<form action="/update/{{my_trip.id}}" method="post">
+									{% csrf_token %}
 									<div class="form control">
 										<div>
 											<label class="form-label" for="driver"><span>Driver:</span></label>
-											<input class="form-control" type="text" name="driver" id="driver">
+											<h3>{{my_trip.driver.first_name}} {{my_trip.driver.last_name}}</h3>
 										</div>
 										<div>
 											<label class="form-label" for="city-from"><span>From:</span></label>
@@ -116,15 +124,19 @@
 										<div>
 											<label class="form-label" for="number_seates"><span>Number of
 													Seates:</span></label>
-											<input class="form-control" type="number" name="number_seates"
-												id="number_seates">
+											<h3>{{my_trip.seats_num}}</h3>
 										</div>
 										<p><span>Passengers:</span></p>
+										<ul>
+											{% for passanger in my_passangers %}
+											<li>{{passanger.passanger.first_name}}</li>
+											{% endfor %}
+										</ul>
 									</div>
 									<div>
 										<div>
 											<label class="form-label" for="phone_num"><span>Phone Number:</span></label>
-											<input class="form-control" type="number" name="phone_num" id="phone_num">
+											<input class="form-control" type="number" name="phone-num" id="phone_num" value="{{my_trip.phone_num}}">
 										</div>
 										<div>
 											<label class="form-label" for="city-to"><span>To:</span></label>
@@ -141,15 +153,14 @@
 										</div>
 										<div>
 											<label class="form-label" for="when"><span>Trip Time:</span></label>
-											<input class="form-control" type="datetime-local" name="when" id="when">
+											<input class="form-control" type="datetime-local" name="date_from" id="when" value="{{my_trip.when}}" required>
 										</div>
 										<div>
 											<label class="form-label" for="desc"><span>Description:</span></label>
-											<textarea class="form-control" name="desc" id="desc" cols="30"
-												rows="5"></textarea>
+											<textarea class="form-control" name="desc" id="desc" cols="30"rows="5">{{my_trip.descreption}}</textarea>
 										</div>
-										<button type="submit" id="update_btn" class="btn btn-primary">Update</button>
-										<button type="submit" class="btn btn-danger">Delete</button>
+										<button type="submit" id="update_btn" class="btn btn-primary" name="update_trip">Update</button>
+										<button type="button" class="btn btn-danger"><a href="/delete_trip/{{my_trip.id}}">delete</a></button>
 									</div>
 								</form>
 								{% endif %}
