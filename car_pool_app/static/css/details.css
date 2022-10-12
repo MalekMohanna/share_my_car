@@ -267,6 +267,12 @@ form{
   gap: 60px;
 }
 
+.my-details{
+	display: flex;
+	justify-content: space-around;
+	gap: 90px;
+}
+
 .card-content span{
   font-weight: bold;
   color: #A288DE;

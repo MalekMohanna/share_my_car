@@ -89,3 +89,8 @@ def trip_details(request,id):
         'my_user':User.objects.get(id=request.session['user_id']),
     }
     return render(request,'trip_details.html',context)
+
+def join_trip(request):
+    user = User.objects.get(id=request.session['user_id'])
+    # trip = Trip.objects.get(id = )
+    return
