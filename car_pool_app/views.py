@@ -8,32 +8,30 @@ from django.contrib import messages
 
 
 def index(request):
-    return redirect('/login')
+    return render(request,'landing.html')
 
 def login(request):
-
     return render(request,'login.html')
+
+def proc_login(request):
+    if request.method != "POST":
+        return redirect("/login")
+    valid = User.objects.login_validator(request.POST)
+    if len (valid["errors"]) > 0:
+        for key, value in valid["errors"].items():
+            messages.error(request,value)
+        return redirect("/login")
+    else:
+        request.session["user_id"] = valid["user"].id
+        return redirect ("/success")
+    
 
 def success(request):
     if "user_id" not in request.session:
         return redirect("/")
     return redirect('/wall')
 
-def proc_login(request):
-    if request.method != "POST":
-        return redirect("/")
-    valid = User.objects.login_validator(request.POST)
-    if len (valid["errors"]) > 0:
-        for key, value in valid["errors"].items():
-            messages.error(request,value)
-        return redirect("/")
-    else:
-        request.session["user_id"] = valid["user"].id
-        return redirect ("/success")
-    
-
 def registration(request):
-
     return render(request,'registration.html')
 
 def regist_proc(request):
@@ -59,7 +57,10 @@ def wall(request):
     return render(request,'wall.html',context)
 
 def make_trip(request):
-    return render(request,'add_trip.html')
+    context = {
+        'my_user':User.objects.get(id=request.session['user_id']),
+    }
+    return render(request,'add_trip.html',context)
 
 def trip_process(request):
     errors ={}
@@ -140,8 +141,12 @@ def search(request):
     x = Trip.objects.filter(from_where = from1, to_where = to)
     context = {
         'my_trip': x,
+        'my_user':User.objects.get(id=request.session['user_id']),
     }
     return render(request,'search.html',context)
 
 def about(request):
-    return render(request,'about.html')
+    context = {
+        'my_user':User.objects.get(id=request.session['user_id']),
+    }
+    return render(request,'about.html',context)

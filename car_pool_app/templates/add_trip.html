@@ -11,37 +11,27 @@
 </head>
 <body>
   
-    <nav class=" d-flex justify-content-between navbar navbar-expand-lg navbar-light bg-light">
-        <div>
-            <p class="navbar-brand">hello <a href="#">Username!</a></p>
-        </div>
-        <div>
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Add Trip</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Log Out</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link" href="#">About Us</a>
-             
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <!DOCTYPE html>
-<html>
-  <head>
-    <title>5K & 10K Registration Form</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
-  </head>
+  <nav class="d-flex justify-content-around navbar navbar-expand-lg" id="nav">
+    <div>
+      <p class="navbar-brand">Welcome <a href="/account">{{my_user.first_name}}!</a></p>
+    </div>
+    <div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a id="orange" class="nav-link" href="/wall">Home</a>
+        </li>
+        <li class="nav-item">
+          <a id="orange" class="nav-link" href="/make_trip">Add Trip</a>
+        </li>
+        <li class="nav-item">
+          <a id="orange" class="nav-link" href="/about">About Us</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a id="orange" class="nav-link btn btn-outline-danger " href="/logout">Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
   <body>
     <div class="testbox">
       <form action="/trip_process" method="POST">
@@ -49,6 +39,16 @@
         <div class="banner">
         </div>
         <h2>Add Trip</h2>
+        <div class="col">
+          {% if messages %}
+          <p style="color: red;">Massages of validation</p>
+          <ul class="messages">
+            {% for message in messages %}
+            <li style="color: red;" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
         <div class="item">
           <label for="phone_number">Phone Number<span>*</span></label>
           <input id="phone_number" type="text" name="phone-num" required/>

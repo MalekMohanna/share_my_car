@@ -40,7 +40,7 @@ class TripManager(models.Manager):
     def trip_validation(self,postdata):
         errors = {}  
 
-        if len(postdata["phone-num"]) < 2:
+        if len(postdata["phone-num"]) < 9:
             errors["phone-num"] = "Phone number should be at least 9 numbers"
         if len(postdata["car-name"]) < 3:
             errors["car-name"] = "Car name number should be at least 3 characters"
