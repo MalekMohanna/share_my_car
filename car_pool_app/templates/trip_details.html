@@ -53,7 +53,7 @@
 											<p><span>Passengers:</span></p>
 											<ul>
 											{% for passanger in my_passangers %}
-											<li>{{passanger.passanger.first_name}}</li>
+											<li>{{passanger.passanger.first_name}} {{passanger.passanger.last_name}}</li>
 											{% endfor %}
 										</ul>
 										</div>
@@ -95,7 +95,7 @@
 										<p><span>Passengers:</span></p>
 										<ul>
 											{% for passanger in my_passangers %}
-											<li>{{passanger.passanger.first_name}}</li>
+											<li>{{passanger.passanger.first_name}} {{passanger.passanger.last_name}}</li>
 											{% endfor %}
 										</ul>
 									</div>
