@@ -1,6 +1,7 @@
 from distutils.log import error
 from lib2to3.pgen2 import driver
 from multiprocessing import context
+from tkinter import Y
 from django.shortcuts import render,redirect
 from .models import *
 from django.contrib import messages
@@ -91,6 +92,8 @@ def account(request):
 
 def trip_details(request,id):
     z = Passanger.objects.filter(trip_id=id)
+    
+    
     context = {
         'my_trip':Trip.objects.get(id=id),
         'my_user':User.objects.get(id=request.session['user_id']),
@@ -101,12 +104,13 @@ def trip_details(request,id):
 def join_trip(request,id):
     user = User.objects.get(id=request.session['user_id'])
     trip = Trip.objects.get(id = id)
+    y = Passanger.objects.filter(passanger_id=request.session['user_id'],trip_id=id)
     c = trip.id
     check =Passanger.objects.filter(trip=trip)
     print(check)
     seats_availabe =trip.seats_num
     if seats_availabe > 0:
-        if not check :
+        if not y :
             y=trip.seats_num
             y-=1
             trip.seats_num=y
