@@ -1,6 +1,7 @@
 from distutils.log import error
 from lib2to3.pgen2 import driver
 from multiprocessing import context
+from tkinter import Y
 from django.shortcuts import render,redirect
 from .models import *
 from django.contrib import messages
@@ -50,17 +51,23 @@ def logout(request):
     return redirect ("/login")
 
 def wall(request):
-    context={
-        'my_trip':Trip.objects.all(),
-        'my_user':User.objects.get(id=request.session['user_id']),
-    }
-    return render(request,'wall.html',context)
+    if 'user_id' not in request.session:
+        return redirect('/')
+    else :
+        context={
+            'my_trip':Trip.objects.all(),
+            'my_user':User.objects.get(id=request.session['user_id']),
+        }
+        return render(request,'wall.html',context)
 
 def make_trip(request):
-    context = {
-        'my_user':User.objects.get(id=request.session['user_id']),
-    }
-    return render(request,'add_trip.html',context)
+    if 'user_id' not in request.session:
+        return redirect('/')
+    else :
+        context = {
+            'my_user':User.objects.get(id=request.session['user_id']),
+        }
+        return render(request,'add_trip.html',context)
 
 def trip_process(request):
     errors ={}
@@ -82,37 +89,43 @@ def trip_process(request):
     return redirect('/make_trip')
 
 def account(request):
-    context={
-        'my_trip':Trip.objects.all(),
-        'my_user':User.objects.get(id=request.session['user_id']),
-        'my_passanger':Passanger.objects.all(),
-    }
-    return render(request,'account.html',context)
+    if 'user_id' not in request.session:
+        return redirect('/')
+    else :
+        context={
+            'my_trip':Trip.objects.all(),
+            'my_user':User.objects.get(id=request.session['user_id']),
+            'my_passanger':Passanger.objects.all(),
+        }
+        return render(request,'account.html',context)
 
 def trip_details(request,id):
-    z = Passanger.objects.filter(trip_id=id)
-    context = {
-        'my_trip':Trip.objects.get(id=id),
-        'my_user':User.objects.get(id=request.session['user_id']),
-        'my_passangers':z,
-    }
-    return render(request,'trip_details.html',context)
+    if 'user_id' not in request.session:
+        return redirect('/')
+    else :
+        z = Passanger.objects.filter(trip_id=id)
+        context = {
+            'my_trip':Trip.objects.get(id=id),
+            'my_user':User.objects.get(id=request.session['user_id']),
+            'my_passangers':z,
+        }
+        return render(request,'trip_details.html',context)
 
 def join_trip(request,id):
     user = User.objects.get(id=request.session['user_id'])
     trip = Trip.objects.get(id = id)
-    id = trip.id
-    check =Passanger.objects.filter(passanger=user)
+    y = Passanger.objects.filter(passanger_id=request.session['user_id'],trip_id=id)
+    c = trip.id
     seats_availabe =trip.seats_num
     if seats_availabe > 0:
-        if not check :
+        if not y :
             y=trip.seats_num
             y-=1
             trip.seats_num=y
             trip.save()
             x = Passanger.objects.create(passanger = user,trip = trip)
             x.save()
-    return redirect(f'/details/{id}')
+    return redirect(f'/details/{c}')
 
 def update(request,id):
     x= Trip.objects.get(id= id)
@@ -136,17 +149,23 @@ def delete(request,id):
     return redirect('/wall')
 
 def search(request):
-    from1 = request.POST['from']
-    to = request.POST['to']
-    x = Trip.objects.filter(from_where = from1, to_where = to)
-    context = {
-        'my_trip': x,
-        'my_user':User.objects.get(id=request.session['user_id']),
-    }
-    return render(request,'search.html',context)
+    if 'user_id' not in request.session:
+        return redirect('/')
+    else :
+        from1 = request.POST['from']
+        to = request.POST['to']
+        x = Trip.objects.filter(from_where = from1, to_where = to)
+        context = {
+            'my_trip': x,
+            'my_user':User.objects.get(id=request.session['user_id']),
+        }
+        return render(request,'search.html',context)
 
 def about(request):
-    context = {
-        'my_user':User.objects.get(id=request.session['user_id']),
-    }
-    return render(request,'about.html',context)
+    if 'user_id' not in request.session:
+        return redirect('/')
+    else :
+        context = {
+            'my_user':User.objects.get(id=request.session['user_id']),
+        }
+        return render(request,'about.html',context)
