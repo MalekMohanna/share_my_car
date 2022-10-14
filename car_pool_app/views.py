@@ -5,6 +5,8 @@ from tkinter import Y
 from django.shortcuts import render,redirect
 from .models import *
 from django.contrib import messages
+from django.http import JsonResponse
+
 
 
 
@@ -169,3 +171,19 @@ def about(request):
             'my_user':User.objects.get(id=request.session['user_id']),
         }
         return render(request,'about.html',context)
+
+def check(request):
+    exist = False
+    rightpassword=False
+    if request.POST:
+        if User.objects.filter(email=request.POST['email']).exists():
+            existing_user=User.objects.get(email=request.POST['email'])
+            exist = True
+            if bcrypt.checkpw(request.POST["password"].encode(),existing_user.password.encode()):
+                rightpassword=True
+    data = {
+        'taken' : exist,
+        'rightpassword':rightpassword
+    }
+    print('hi')
+    return JsonResponse(data)

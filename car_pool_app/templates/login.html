@@ -23,7 +23,7 @@
 					<a href="https://rpbloggers.com/"><i class="fab fa-google-plus-g"></i></a>
 					<a href="https://rpbloggers.com/"><i class="fab fa-linkedin-in"></i></a>
 				</div>
-				<div class="col">
+				<div class="col" id="check">
 				{% if messages %}
 						<ul class="messages">
 						{% for message in messages %}
@@ -32,8 +32,8 @@
 						</ul>
 				{% endif %}
 				</div>
-				<input type="email" name="login_email" placeholder="User Email">
-				<input type="password" name="login_password" placeholder="Password">
+				<input type="email" name="login_email" id="email" placeholder="User Email">
+				<input type="password" name="login_password" id="password" placeholder="Password">
 				<button>Sign In</button>
 			</form>
 		</div>
@@ -49,4 +49,62 @@
 	</div>
 </body>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script> 
+var email = document.getElementById('email');
+$(function(){
+	
+	
+	$('#password').keyup('dbclick',function(){
+		var password =document.querySelector('#password')
+		var f=0;
+	console.log(email.innerText)
+	event.preventDefault();  
+	$.ajaxSetup({
+            headers: {
+                "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value,
+            }
+        });
+			
+	$.ajax({
+		method: 'POST',
+		type: 'POST',
+		url:'check',
+		data: {
+			'email':$('#email').val(),
+			'password':$('#password').val(),
+        },
+        dataType: 'json',
+		success:function (data) {
+	
+        if (data.taken ) {
+            $("#check").append("<b>Email Exist</b>")
+        }
+		else{
+				$("#check").append("<b>Email doesnt Exists</b>")
+			
+			}
+		if (data.rightpassword)
+			{
+			$("#check").append("<b>Right Pass </b>")
+			}
+			else{
+				$("#check").append("<b>Wrong Pass </b>")
+			}
+		
+        }
+	})
+
+});
+});
+
+// $(document).ready(function(){
+// 	$('#login_password').mouseenter('dbclick',function(){
+    
+// });
+// });
+	
+</script>
 </html>
