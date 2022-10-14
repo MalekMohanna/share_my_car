@@ -101,8 +101,9 @@ def trip_details(request,id):
 def join_trip(request,id):
     user = User.objects.get(id=request.session['user_id'])
     trip = Trip.objects.get(id = id)
-    id = trip.id
-    check =Passanger.objects.filter(passanger=user)
+    c = trip.id
+    check =Passanger.objects.filter(trip=trip)
+    print(check)
     seats_availabe =trip.seats_num
     if seats_availabe > 0:
         if not check :
@@ -112,7 +113,7 @@ def join_trip(request,id):
             trip.save()
             x = Passanger.objects.create(passanger = user,trip = trip)
             x.save()
-    return redirect(f'/details/{id}')
+    return redirect(f'/details/{c}')
 
 def update(request,id):
     x= Trip.objects.get(id= id)
