@@ -13,27 +13,28 @@
 </head>
 
 <body>
-    <nav class="d-flex justify-content-around navbar navbar-expand-lg" id="nav">
-        <div>
-            <p class="navbar-brand">Welcome <a href="/account">{{my_user.first_name}}!</a></p>
+    <nav class="d-flex justify-content-between navbar navbar-expand-lg" id="nav">
+        <div class="d-flex justify-content-between">
+          <img class="logo" src="{% static 'icons/mylogo.png' %}" />
+          <p class="navbar-brand">Welcome <a id="username" href="/account">{{my_user.first_name}}!</a></p>
         </div>
         <div>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a id="orange" class="nav-link" href="/wall">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a id="orange" class="nav-link" href="/make_trip">Add Trip</a>
-                </li>
-                <li class="nav-item">
-                    <a id="orange" class="nav-link" href="/about">About Us</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a id="orange" class="nav-link btn btn-outline-danger " href="/logout">Log Out</a>
-                </li>
-            </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a id="orange" class="nav-link" href="/wall">Home</a>
+            </li>
+            <li class="nav-item">
+              <a id="orange" class="nav-link" href="/make_trip">Add Trip</a>
+            </li>
+            <li class="nav-item">
+              <a id="orange" class="nav-link" href="/about">About Us</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a id="orange" class="nav-link btn btn-danger " href="/logout">Log Out</a>
+            </li>
+          </ul>
         </div>
-    </nav>
+      </nav>
     <form action="/search" method="post">
         {% csrf_token %}
         <nav class="navbar navbar-expand-lg d-flex justify-content-around" id="search_bar">
@@ -64,8 +65,8 @@
                     <option value="Bethlehem">Bethlehem</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Filter</button>
-            <button type="button" class="btn btn-primary"><a style="color: white; border:none;" href="/wall">Reset</a></button>
+            <button type="submit" id="filter" class="btn btn-primary">Filter</button>
+            <a href="/wall" id="filter" class="btn btn-primary">Reset</a>
         </nav>
     </form>
     <section>
