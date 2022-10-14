@@ -13,9 +13,10 @@
 </head>
 
 <body>
-  <nav class="d-flex justify-content-around navbar navbar-expand-lg" id="nav">
-    <div>
-      <p class="navbar-brand">Welcome <a href="/account">{{my_user.first_name}}!</a></p>
+  <nav class="d-flex justify-content-between navbar navbar-expand-lg" id="nav">
+    <div class="d-flex justify-content-between">
+      <img class="logo" src="{% static 'icons/mylogo.png' %}" />
+      <p class="navbar-brand">Welcome <a id="username" href="/account">{{my_user.first_name}}!</a></p>
     </div>
     <div>
       <ul class="navbar-nav">
@@ -29,7 +30,7 @@
           <a id="orange" class="nav-link" href="/about">About Us</a>
         </li>
         <li class="nav-item dropdown">
-          <a id="orange" class="nav-link btn btn-outline-danger " href="/logout">Log Out</a>
+          <a id="orange" class="nav-link btn btn-danger " href="/logout">Log Out</a>
         </li>
       </ul>
     </div>
@@ -38,7 +39,6 @@
     {% csrf_token %}
     <nav class="navbar navbar-expand-lg d-flex justify-content-around" id="search_bar">
       <div>
-
         <select class="form-select" aria-label="Default select example" name="from" id="from">
           <option value="0">From:</option>
           <option value="Ramallah">Ramallah</option>
@@ -64,7 +64,7 @@
           <option value="Bethlehem">Bethlehem</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary">Filter</button>
+      <button type="submit" id="filter" class="btn btn-primary">Filter</button>
     </nav>
   </form>
   <section>

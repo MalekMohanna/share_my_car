@@ -12,9 +12,10 @@
 </head>
 
 <body>
-	<nav class="d-flex justify-content-around navbar navbar-expand-lg" id="nav">
-		<div>
-		  <p class="navbar-brand">Welcome <a href="#">{{my_user.first_name}}!</a></p>
+	<nav class="d-flex justify-content-between navbar navbar-expand-lg" id="nav">
+		<div class="d-flex justify-content-between">
+		  <img class="logo" src="{% static 'icons/mylogo.png' %}" />
+		  <p class="navbar-brand">Welcome <a id="username" href="/account">{{my_user.first_name}}!</a></p>
 		</div>
 		<div>
 		  <ul class="navbar-nav">
@@ -25,10 +26,10 @@
 			  <a id="orange" class="nav-link" href="/make_trip">Add Trip</a>
 			</li>
 			<li class="nav-item">
-			  <a id="orange" class="nav-link" href="#">About Us</a>
+			  <a id="orange" class="nav-link" href="/about">About Us</a>
 			</li>
 			<li class="nav-item dropdown">
-			  <a id="orange" class="nav-link btn btn-outline-danger " href="#">Log Out</a>
+			  <a id="orange" class="nav-link btn btn-danger " href="/logout">Log Out</a>
 			</li>
 		  </ul>
 		</div>
