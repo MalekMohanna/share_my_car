@@ -19,4 +19,6 @@ urlpatterns = [
     path('update/<int:id>',views.update),
     path('delete_trip/<int:id>',views.delete),
     path('about/',views.about),
+    path('login/check',views.check,name="check"),
+
 ]
