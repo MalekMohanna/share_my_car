@@ -80,24 +80,24 @@ $(function(){
         },
         dataType: 'json',
 		success:function (data) {
-			
+	    var vali=""
         if (data.taken ) {
-
-			$("#check").html("<b>Email Exist</b>")
+            vali ="<b>Email Exist</b>"
+			
 			$("#check").css("background-color","green")
         }
 		else{
-				$("#check").html("<b>Email doesnt Exists</b>")
+				vali="<b>Email doesnt Exists</b>";
 				$("#check").css("background-color","red")
 				
 			}
 		if (data.rightpassword)
 			{
-			$("#check").html("<b>Right Pass </b>");
+			$("#check").html(vali+"<b>Right Pass </b>");
 			$("#check").css("background-color","green");
 			}
 			else{
-				$("#check").html("<b>Wrong Pass </b>");
+				$("#check").html(vali+"<b>Wrong Pass </b>");
 				$("#check").css("background-color","red")
 			}
 			
