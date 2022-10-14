@@ -23,7 +23,8 @@
 					<a href="https://rpbloggers.com/"><i class="fab fa-google-plus-g"></i></a>
 					<a href="https://rpbloggers.com/"><i class="fab fa-linkedin-in"></i></a>
 				</div>
-				<div class="col" id="check">
+				<div class="col">
+					<p id="check"></p>
 				{% if messages %}
 						<ul class="messages">
 						{% for message in messages %}
@@ -58,6 +59,7 @@ $(function(){
 	
 	
 	$('#password').keyup('dbclick',function(){
+		
 		var password =document.querySelector('#password')
 		var f=0;
 	console.log(email.innerText)
@@ -78,26 +80,31 @@ $(function(){
         },
         dataType: 'json',
 		success:function (data) {
-	
+			
         if (data.taken ) {
-            $("#check").append("<b>Email Exist</b>")
+
+			$("#check").html("<b>Email Exist</b>")
+			$("#check").css("background-color","green")
         }
 		else{
-				$("#check").append("<b>Email doesnt Exists</b>")
-			
+				$("#check").html("<b>Email doesnt Exists</b>")
+				$("#check").css("background-color","red")
+				
 			}
 		if (data.rightpassword)
 			{
-			$("#check").append("<b>Right Pass </b>")
+			$("#check").html("<b>Right Pass </b>");
+			$("#check").css("background-color","green");
 			}
 			else{
-				$("#check").append("<b>Wrong Pass </b>")
+				$("#check").html("<b>Wrong Pass </b>");
+				$("#check").css("background-color","red")
 			}
-		
+			
         }
 	})
-
 });
+
 });
 
 // $(document).ready(function(){
