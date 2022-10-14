@@ -50,7 +50,7 @@ def regist_proc(request):
 
 def logout(request):
     request.session.clear()
-    return redirect ("/login")
+    return redirect ("/")
 
 def wall(request):
     if 'user_id' not in request.session:
@@ -131,7 +131,6 @@ def join_trip(request,id):
 
 def update(request,id):
     x= Trip.objects.get(id= id)
-    print(x.car)
     phone = request.POST['phone-num']
     from1 = request.POST['city-from']
     to = request.POST['city-to']
@@ -185,5 +184,4 @@ def check(request):
         'taken' : exist,
         'rightpassword':rightpassword
     }
-    print('hi')
     return JsonResponse(data)
