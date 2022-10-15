@@ -346,3 +346,14 @@ form{
 	font-weight: 400;
     font-size: 18px;
   }
+
+  ul li{
+	list-style: none;
+	color: #468BE8;
+	font-weight: bold;
+	margin-left: 10px;
+  }
+
+  ul{
+	border: #5161ce 1px solid;
+  }
