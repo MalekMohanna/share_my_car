@@ -66,10 +66,13 @@ To do:
 - Malek Mohanna
 - Mostafa Al-Haj Qasem
 - Ali Tamrawe
-- Ali Tamrawe
+- Hadeel Abu-Kamel
 
 
 ## Contact
 email: 
 malekmhana@gmail.com
+mostafa.hajqasem@gmail.com
+Ali.h.tamrawe@gmail.com
+hadeela_k2050@yahoo.com
 
