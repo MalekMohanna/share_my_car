@@ -59,8 +59,9 @@ there are front end and backend validations for the login/registration form feil
 ## Room-for-improvement
 To do:
 - Rating system for the users. 
-- chat-box for better communication
-- payment methods.
+- Chat-box for better communication
+- Fixing the map
+- Payment methods.
 
 ## Members
 - Malek Mohanna
