@@ -53,7 +53,7 @@
 											<p><span>Car:</span>{{my_trip.car}}</p>
 											<p><span>Number of Seates:</span>{{my_trip.seats_num}}</p>
 											<p><span>Passengers:</span></p>
-											<ul>
+											<ul id="pass-list">
 											{% for passanger in my_passangers %}
 											<li>{{passanger.passanger.first_name}} {{passanger.passanger.last_name}}</li>
 											{% endfor %}
@@ -94,7 +94,7 @@
 											<input class="form-control" type="number" name="phone-num" id="phone_num" value="{{my_trip.seats_num}}">
 										</div>
 										<p><span>Passengers:</span></p>
-										<ul>
+										<ul id="pass-list">
 											{% for passanger in my_passangers %}
 											<li>{{passanger.passanger.first_name}} {{passanger.passanger.last_name}}</li>
 											{% endfor %}

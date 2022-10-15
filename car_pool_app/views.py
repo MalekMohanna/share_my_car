@@ -121,9 +121,9 @@ def join_trip(request,id):
     seats_availabe =trip.seats_num
     if seats_availabe > 0:
         if not y :
-            y=trip.seats_num
-            y-=1
-            trip.seats_num=y
+            my_seats=trip.seats_num
+            my_seats-=1
+            trip.seats_num=my_seats
             trip.save()
             x = Passanger.objects.create(passanger = user,trip = trip)
             x.save()
