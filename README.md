@@ -70,9 +70,9 @@ To do:
 
 
 ## Contact
-## email: 
-malekmhana@gmail.com
-mostafa.hajqasem@gmail.com
-Ali.h.tamrawe@gmail.com
-hadeela_k2050@yahoo.com
+## Emails: 
+- malekmhana@gmail.com
+- mostafa.hajqasem@gmail.com
+- Ali.h.tamrawe@gmail.com
+- hadeela_k2050@yahoo.com
 
