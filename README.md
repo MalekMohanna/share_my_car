@@ -58,7 +58,7 @@ there are front end and backend validations for the login/registration form feil
 ![abot_us](https://github.com/MalekMohanna/share_my_car/blob/master/images/about_us.png)
 ## Room-for-improvement
 To do:
-- Rating system for the users. .
+- Rating system for the users. 
 - chat-box for better communication
 - payment methods.
 
